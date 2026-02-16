@@ -75,7 +75,7 @@ header {
 /* Logo (Absolute Centered by default) */
 .logo {
     position: fixed;
-    top: 40vh;
+    top: 35vh;
     /* Moved upwards to clear content area */
     left: 50%;
     transform: translate(-50%, -50%);
@@ -472,4 +472,5 @@ footer {
     .logo {
         width: 80%;
     }
+
 }
