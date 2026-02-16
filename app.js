@@ -162,10 +162,12 @@ window.addEventListener("click", (event) => {
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+const header = document.querySelector('header'); // Select header
 
 if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
+        header.classList.toggle('menu-active'); // Toggle class on header for z-index containment
     });
 }
 
@@ -173,5 +175,6 @@ if (mobileMenuBtn) {
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+        header.classList.remove('menu-active');
     });
 });

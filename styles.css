@@ -75,7 +75,7 @@ header {
 /* Logo (Absolute Centered by default) */
 .logo {
     position: fixed;
-    top: 35vh;
+    top: 40vh;
     /* Moved upwards to clear content area */
     left: 50%;
     transform: translate(-50%, -50%);
@@ -432,14 +432,42 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* --- Dynamic Mobile Menu Logic --- */
+
+    /* 1. Top of Page (Default) */
     .menu-toggle {
-        display: flex;
-        /* Show hamburger on mobile */
+        display: none;
+        /* Hide Hamburger at top */
     }
 
     .nav-links {
+        display: flex;
+        /* Show Links at top */
+        flex-direction: row;
+        position: static;
+        width: auto;
+        padding: 0;
+        background: transparent;
+        border: none;
+        gap: 1rem;
+        font-size: 0.8rem;
+        /* Smaller font to fit */
+    }
+
+    /* 2. Scrolled State (Hamburger Mode) */
+    body.scrolled .menu-toggle {
+        display: flex;
+        /* Show Hamburger when scrolled */
+    }
+
+    body.scrolled .nav-links {
         display: none;
-        /* Hide default nav */
+        /* Hide inline links when scrolled */
+    }
+
+    /* 3. Active Hamburger Menu (Override Scrolled State) */
+    body.scrolled .nav-links.active {
+        display: flex;
         flex-direction: column;
         position: absolute;
         top: 100%;
@@ -450,16 +478,14 @@ footer {
         padding: 2rem 0;
         border-bottom: 1px solid var(--border-color);
         text-align: center;
+        gap: 0;
     }
 
-    .nav-links.active {
-        display: flex;
-        /* Show when active */
-    }
-
-    .nav-links li {
+    body.scrolled .nav-links.active li {
         margin: 1.5rem 0;
     }
+
+    /* --- End Dynamic Logic --- */
 
     .video-grid {
         grid-template-columns: 1fr;
@@ -472,5 +498,4 @@ footer {
     .logo {
         width: 80%;
     }
-
 }
