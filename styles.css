@@ -404,6 +404,26 @@ footer {
 
 /* Respons
 
+/* Mobile Navigation */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .video-grid {
@@ -412,6 +432,35 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        /* Show hamburger on mobile */
+    }
+
+    .nav-links {
+        display: none;
+        /* Hide default nav */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+        /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
+    }
+
     .video-grid {
         grid-template-columns: 1fr;
     }
@@ -422,8 +471,5 @@ footer {
 
     .logo {
         width: 80%;
-        /* Ensure text wraps if needed */
     }
-
-    /* Mobile Header matches desktop logic via JS scroll class */
 }
